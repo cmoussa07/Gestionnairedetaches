@@ -5,17 +5,22 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.gestionnairedetaches.ui.theme.GestionnairedetachesTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,8 +35,8 @@ class MainActivity : ComponentActivity() {
                 )
                 {
                     Gestionnairedetaches(
-                        premiermessage = "All tasks completed",
-                        deuxiememessage = "Nice work!",
+                        premiermessage = stringResource(R.string.all_tasks_completed_text),
+                        deuxiememessage = stringResource(R.string.nice_work_text),
                     )
                 }
 
@@ -43,7 +48,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Gestionnairedetaches(premiermessage: String, deuxiememessage: String,
                          modifier: Modifier = Modifier) {
-   Column(){
+   Column(
+       modifier = modifier
+           .fillMaxSize(),
+       verticalArrangement = Arrangement.Center,
+       horizontalAlignment = Alignment.CenterHorizontally
+
+   ){
        val image = painterResource(R.drawable.check)
        Image(
            painter = image,
@@ -52,11 +63,14 @@ fun Gestionnairedetaches(premiermessage: String, deuxiememessage: String,
 
        Text(
            text = premiermessage,
-           modifier = modifier
+           fontWeight = FontWeight.Bold,
+           modifier = Modifier
+               .padding(top = 24.dp)
+               .padding(bottom = 8.dp)
        )
        Text(
            text = deuxiememessage,
-           modifier = modifier
+           fontSize = 16.sp
        )
    }
 }
@@ -65,7 +79,7 @@ fun Gestionnairedetaches(premiermessage: String, deuxiememessage: String,
 @Composable
 fun GestionnairedetachesPreview() {
     Gestionnairedetaches(
-        premiermessage = "All tasks completed",
-        deuxiememessage = "Nice work!",
+        premiermessage = stringResource(R.string.all_tasks_completed_text),
+        deuxiememessage = stringResource(R.string.nice_work_text),
     )
 }
