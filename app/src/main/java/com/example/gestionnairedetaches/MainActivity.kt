@@ -75,7 +75,7 @@ fun Gestionnairedetaches(premiermessage: String, deuxiememessage: String,
    }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GestionnairedetachesPreview() {
     Gestionnairedetaches(
